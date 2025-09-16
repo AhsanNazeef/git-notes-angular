@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.gist-view-selector {
+  display: flex;
+  border: 1px solid rgba(227, 227, 227, 1);
+  border-radius: 4px;
+}
+
+.view-button {
+  border-radius: 3px;
+  padding: 8px 15px;
+}
+
+.view-button-grid {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.view-button-list {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+fa-icon {
+  color: rgba(183, 183, 183, 1);
+}
+
+.active {
+  background-color: rgba(227, 227, 227, 1);
+
+  fa-icon {
+    color: rgba(0, 59, 68, 1);
+  }
+}

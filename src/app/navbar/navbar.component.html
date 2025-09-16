@@ -5,7 +5,7 @@
 <div class="right-content">
   <div class="input-container">
     <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
-    <input type="text" placeholder="Search gists..." class="search-input" />
+    <input type="text" placeholder="Search gists..." class="search-input" (input)="onSearchChange($event)" [(ngModel)]="searchTerm" />
   </div>
   <button class="login-button">Login</button>
 </div>

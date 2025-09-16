@@ -1,0 +1,13 @@
+<div class="header-container">
+  <h2 class="header-title">Public Gists</h2>
+  <div class="gist-view-selector">
+    <button (click)="setViewMode('grid')" [class.active]="viewMode === 'grid'" class="view-button view-button-grid">
+      <fa-icon [icon]="faThLarge" class="grid-icon fa-thin"></fa-icon>
+    </button>
+    <button (click)="setViewMode('list')" [class.active]="viewMode === 'list'" class="view-button view-button-list">
+      <fa-icon [icon]="faListDots" class="list-icon fa-thin"></fa-icon>
+    </button>
+  </div>
+</div>
+<app-list-view *ngIf="viewMode === 'list'"></app-list-view>
+<app-grid-view *ngIf="viewMode === 'grid'"></app-grid-view>

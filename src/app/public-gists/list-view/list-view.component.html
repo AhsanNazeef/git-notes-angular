@@ -1,0 +1,29 @@
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="owner">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let gist" class="owner-cell">
+      <img [src]="gist.owner?.avatar_url" [alt]="gist.owner?.login || 'User avatar'" class="avatar" *ngIf="gist.owner?.avatar_url" />
+      <span>{{ gist.owner?.login || 'Anonymous' }}</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Notebook Name</th>
+    <td mat-cell *matCellDef="let gist" class="description">{{ getFirstFileName(gist.files) }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="files">
+    <th mat-header-cell *matHeaderCellDef>Keyword</th>
+    <td mat-cell *matCellDef="let gist">
+      <span class="wrapper">{{ getFirstFileType(gist.files) }}</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="updated">
+    <th mat-header-cell *matHeaderCellDef>Updated</th>
+    <td mat-cell *matCellDef="let gist">{{ gist.updated_at | timeAgo }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

@@ -1,0 +1,46 @@
+:host {
+  --mat-table-background-color: transparent;
+  --mat-table-header-headline-color: rgba(61, 61, 61, 1);
+  --mat-table-header-headline-font: 'Inter';
+  --mat-table-header-headline-size: '14px';
+  --mat-table-header-headline-weight: 700;
+  --mat-table-row-item-outline-color: rgba(227, 227, 227, 1);
+  --mat-table-row-item-label-text-color: rgba(61, 61, 61, 1);
+  --mat-table-row-item-container-height: 68px;
+
+  border: 2px solid rgba(227, 227, 227, 1);
+  border-radius: 5px;
+}
+
+.mat-mdc-header-cell {
+  background-color: rgba(227, 227, 227, 1) !important;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.owner-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 68px;
+}
+
+.description {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wrapper {
+  background-color: rgba(0, 59, 68, 1);
+  padding: 10px 16px;
+  border-radius: 50px;
+  color: white;
+  font-weight: 700;
+}
