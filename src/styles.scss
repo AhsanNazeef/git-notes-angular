@@ -1,6 +1,8 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+@use 'codemirror/lib/codemirror';
+@use 'codemirror/theme/material';
 
 html {
   @include mat.theme(
