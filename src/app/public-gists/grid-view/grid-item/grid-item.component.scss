@@ -1,0 +1,106 @@
+:host {
+  position: relative;
+  height: 252px;
+  border: 1px solid rgba(239, 239, 239, 1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+::ng-deep .CodeMirror {
+  border: 2px solid rgba(250, 250, 250, 1);
+  padding-block: 16px;
+  height: 178px;
+  overflow: hidden;
+  background-color: rgba(250, 250, 250, 1);
+  font-size: 11px;
+  font-family: 'Inter';
+
+  &:hover {
+    border: 2px solid rgba(0, 59, 68, 1);
+    border-radius: 4px;
+  }
+
+  * {
+    cursor: pointer !important;
+  }
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+::ng-deep .CodeMirror-vscrollbar,
+::ng-deep .CodeMirror-hscrollbar,
+::ng-deep .CodeMirror-scroll {
+  overflow: hidden !important;
+}
+
+::ng-deep .CodeMirror-scroll {
+  padding-bottom: 0;
+}
+
+::ng-deep .CodeMirror-linenumber {
+  color: #b7b7b7 !important;
+}
+
+::ng-deep .CodeMirror-gutters {
+  border: none;
+  background-color: rgba(250, 250, 250, 1);
+}
+
+.gist-details {
+  display: flex;
+  padding: 8px;
+  gap: 8px;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.gist-text {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 4px;
+}
+
+.name {
+  position: relative;
+  color: rgba(0, 59, 68, 1);
+  font-size: 14px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-block-end: 4px;
+}
+
+.updated,
+.description {
+  color: rgba(122, 122, 122, 1);
+  font-size: 11px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.current-file {
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  padding: 8px;
+  border-top-right-radius: 4px;
+  background-color: rgba(0, 59, 68, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 11px;
+}
+
+ngx-codemirror:hover + .current-file {
+  display: block;
+}

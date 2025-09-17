@@ -1,0 +1,22 @@
+<ngx-codemirror
+  [(ngModel)]="fileContent"
+  [options]="{
+    lineNumbers: true,
+    mode: 'markdown',
+    readOnly: 'nocursor',
+    scrollbarStyle: 'null'
+  }"
+></ngx-codemirror>
+<p class="current-file">
+  View <b>{{ getFirstFileName() }}</b>
+</p>
+<div class="gist-details">
+  <img [src]="gist.owner.avatar_url" [alt]="gist.owner.login || 'User avatar'" class="avatar" *ngIf="gist.owner?.avatar_url" />
+  <div class="gist-text">
+    <p class="name">
+      {{ gist.owner.login }} / <b>{{ getFirstFileName() }}</b>
+    </p>
+    <p class="updated">{{ gist.updated_at | timeAgo }}</p>
+    <p class="description">{{ gist.description }}</p>
+  </div>
+</div>
