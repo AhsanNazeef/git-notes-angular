@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 import { BehaviorSubject, Observable, combineLatest, switchMap, catchError, of, tap  } from 'rxjs';
 
 export interface Gist {
@@ -19,6 +20,7 @@ export interface Gist {
 })
 export class GistService {
   private readonly apiUrl = 'https://api.github.com/gists/public';
+  private readonly gistDetailUrl = 'https://api.github.com/gists';
 
   // Internal state using BehaviorSubjects
   private pageSubject = new BehaviorSubject<number>(1);
@@ -34,7 +36,7 @@ export class GistService {
   public loading$ = this.loadingSubject.asObservable();
   public error$ = this.errorSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthService) {
     // Auto-fetch gists when page or search changes with debounce for search
     combineLatest([
       this.pageSubject,
@@ -75,11 +77,34 @@ export class GistService {
       params.search = search;
     }
 
-    const headers = {
+    const headers: any = {
       'X-GitHub-Api-Version': '2022-11-28'
     };
 
+    const token = this.authService.getAccessToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
     return this.http.get<Gist[]>(this.apiUrl, { params, headers });
+  }
+
+  fetchGistDetail(gistId: string): Observable<Gist> {
+    const headers: any = {
+      'X-GitHub-Api-Version': '2022-11-28'
+    };
+
+    const token = this.authService.getAccessToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    return this.http.get<Gist>(`${this.gistDetailUrl}/${gistId}`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error fetching gist detail:', error);
+        throw error;
+      })
+    );
   }
 
   // Public methods for components to update state
