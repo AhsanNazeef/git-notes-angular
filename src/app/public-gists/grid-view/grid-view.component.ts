@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Subject, takeUntil } from 'rxjs';
 import { Gist, GistService } from '../../gist.service';
@@ -18,7 +19,7 @@ export class GridViewComponent {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private gistService: GistService) {}
+  constructor(private gistService: GistService, private router: Router) {}
 
   ngOnInit() {
     this.gistService.gists$.pipe(takeUntil(this.destroy$)).subscribe((gists) => {
@@ -32,6 +33,10 @@ export class GridViewComponent {
     this.gistService.loading$.pipe(takeUntil(this.destroy$)).subscribe((isLoading) => {
       this.isLoading = isLoading;
     });
+  }
+
+  onGistClick(gistId: string) {
+    this.router.navigate(['/gist', gistId]);
   }
 
   ngOnDestroy() {

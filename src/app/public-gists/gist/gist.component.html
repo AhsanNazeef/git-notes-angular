@@ -1,6 +1,6 @@
-<div class="header">
+<div class="header" *ngIf="gist">
   <div class="gist-details">
-    <img [src]="gist.owner.avatar_url" [alt]="gist.owner.login || 'User avatar'" class="avatar" *ngIf="gist.owner?.avatar_url" />
+    <img [src]="gist.owner.avatar_url" [alt]="gist.owner.login || 'User avatar'" class="avatar" *ngIf="gist?.owner?.avatar_url" />
     <div class="gist-text">
       <p class="name">
         {{ gist.owner.login }} / <b>{{ getFirstFileName() }}</b>

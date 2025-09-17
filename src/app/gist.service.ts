@@ -69,7 +69,7 @@ export class GistService {
   private fetchGists(page: number, search: string): Observable<Gist[]> {
     const params: any = {
       page: page.toString(),
-      per_page: '8'
+      per_page: '9'
     };
 
     // Add search parameter if search term exists

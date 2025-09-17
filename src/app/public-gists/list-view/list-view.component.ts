@@ -5,6 +5,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Subject, takeUntil } from 'rxjs';
 import { Gist, GistService } from '../../gist.service';
 import { TimeAgoPipe } from '../../time-ago.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-view',
@@ -20,7 +21,7 @@ export class ListViewComponent implements OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private gistService: GistService) {}
+  constructor(private gistService: GistService, private router: Router) {}
 
   ngOnInit() {
     this.gistService.gists$.pipe(takeUntil(this.destroy$)).subscribe((gists) => {
@@ -52,8 +53,8 @@ export class ListViewComponent implements OnDestroy {
   }
 
   get hasNextPage(): boolean {
-    // Assume there's always a next page unless we get less than 8 results
-    return this.dataSource.data.length === 8;
+    // Assume there's always a next page unless we get less than 9 results
+    return this.dataSource.data.length === 9;
   }
 
   get hasPrevPage(): boolean {
@@ -69,4 +70,8 @@ export class ListViewComponent implements OnDestroy {
     const fileKeys = Object.keys(files || {});
     return fileKeys.length > 0 ? files[fileKeys[0]].language : 'Nil';
   }
+
+   onGistClick(gistId: string) {
+      this.router.navigate(['/gist', gistId]);
+    }
 }

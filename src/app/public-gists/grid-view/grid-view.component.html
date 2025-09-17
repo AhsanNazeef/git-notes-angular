@@ -4,7 +4,7 @@
 </div>
 
 <div *ngIf="!isLoading && data.length > 0" class="grid-container">
-  <app-grid-item *ngFor="let item of data" [gist]="item"></app-grid-item>
+  <app-grid-item *ngFor="let item of data" [gist]="item" (click)="onGistClick(item.id)"></app-grid-item>
 </div>
 
 <div class="navigation" *ngIf="data.length > 0">
