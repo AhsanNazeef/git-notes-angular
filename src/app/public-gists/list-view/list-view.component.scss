@@ -44,3 +44,53 @@
   color: white;
   font-weight: 700;
 }
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgba(227, 227, 227, 1);
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+.navigation button {
+  min-width: 100px;
+  height: 40px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.navigation button:disabled {
+  background-color: rgba(227, 227, 227, 1);
+  color: rgba(183, 183, 183, 1);
+  cursor: not-allowed;
+}
+
+.navigation button:not(:disabled) {
+  background-color: rgba(227, 227, 227, 1);
+  color: rgba(0, 59, 68, 1);
+}
+
+.navigation button:not(:disabled):hover {
+  background-color: rgba(227, 227, 227, 1);
+  color: rgba(0, 59, 68, 0.8);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  border: 2px solid rgba(227, 227, 227, 1);
+  border-radius: 5px;
+  background-color: rgba(248, 249, 250, 1);
+  gap: 20px;
+}
+
+.loading-text {
+  font-size: 16px;
+  color: rgba(61, 61, 61, 1);
+  font-weight: 500;
+  margin: 0;
+}
