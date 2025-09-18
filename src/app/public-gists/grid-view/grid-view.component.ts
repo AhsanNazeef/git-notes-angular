@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Gist, GistService } from '../../gist.service';
 import { GridItemComponent } from './grid-item/grid-item.component';
@@ -55,7 +55,7 @@ export class GridViewComponent {
   }
 
   get hasNextPage(): boolean {
-    return this.data.length === 8;
+    return this.data.length === 9;
   }
 
   get hasPrevPage(): boolean {

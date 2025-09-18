@@ -37,6 +37,6 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="onGistClick(row.id)"></tr>
 </table>
 <div class="navigation" *ngIf="dataSource.data.length > 0">
-  <button mat-button (click)="prevPage()" [disabled]="!hasPrevPage">Previous</button>
-  <button mat-button (click)="nextPage()" [disabled]="!hasNextPage">Next</button>
+  <button mat-button (click)="prevPage()" [disabled]="!hasPrevPage">< Prev</button>
+  <button mat-button (click)="nextPage()" [disabled]="!hasNextPage">Next ></button>
 </div>
