@@ -1,0 +1,101 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  gap: 16px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 25px;
+  flex: 1;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 25px;
+  font-weight: 400;
+  color: rgba(61, 61, 61, 1);
+}
+
+.view-profile-button {
+  padding: 12px 32px;
+  border-radius: 5px;
+  background-color: rgba(0, 59, 68, 1);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.all-gists {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid-container {
+  display: grid;
+  gap: 15px;
+}
+
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pagination-button {
+  padding: 0 16px;
+}
+
+.pagination-button:disabled {
+  color: rgba(183, 183, 183, 1);
+  cursor: not-allowed;
+}
+
+.pagination-button:not(:disabled) {
+  color: rgba(0, 59, 68, 1);
+}
+
+.pagination-button:not(:disabled):hover {
+  color: rgba(0, 59, 68, 0.8);
+}
+
+.heading {
+  font-family: 'Inter';
+  color: rgba(61, 61, 61, 1);
+  font-size: 25px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+}
+
+.counter {
+  font-weight: 400;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 59, 68, 1);
+  font-size: 11px;
+}

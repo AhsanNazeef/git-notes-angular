@@ -1,0 +1,20 @@
+<div class="user-details" *ngIf="!isLoading">
+  <img [src]="user?.avatar_url" [alt]="user?.name" class="user-avatar" />
+  <p class="user-name">{{ user?.name }}</p>
+  <button class="view-profile-button" (click)="openGithubProfile()">View Github Profile</button>
+</div>
+<div *ngIf="isLoading" class="loading-container">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div class="all-gists" *ngIf="!isLoading && gists.length >= 0">
+  <h1 class="heading">
+    All Gists <span class="counter">{{ user?.public_gists }}</span>
+  </h1>
+  <div *ngIf="!isLoading && gists.length > 0" class="grid-container">
+    <app-grid-item *ngFor="let item of gists" [gist]="item" (click)="onGistClick(item.id)"></app-grid-item>
+  </div>
+  <div class="navigation" *ngIf="gists.length > 0">
+    <button (click)="prevPage()" [disabled]="page === 1" class="pagination-button"><</button>
+    <button (click)="nextPage()" [disabled]="gists.length < perPage" class="pagination-button">></button>
+  </div>
+</div>
