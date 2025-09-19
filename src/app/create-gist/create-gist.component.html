@@ -1,0 +1,26 @@
+<h1 class="heading">Create Gist</h1>
+<div class="create-gist-container">
+  <input placeholder="Description" [(ngModel)]="description" />
+
+  <div class="file-details" *ngFor="let file of files; let i = index">
+    <div class="header">
+      <input placeholder="Filename including extension..." [(ngModel)]="file.filename" />
+      <button (click)="removeFile(i)" *ngIf="files.length > 1" class="card-icon">
+        <fa-icon [icon]="faTrashAlt" class="fa-1x"></fa-icon>
+      </button>
+    </div>
+    <ngx-codemirror
+      [(ngModel)]="file.content"
+      [options]="{
+        lineNumbers: true,
+        mode: 'markdown',
+        scrollbarStyle: 'null'
+      }"
+    ></ngx-codemirror>
+  </div>
+
+  <div class="buttons-container">
+    <button (click)="addFile()" class="add-file">Add File</button>
+    <button (click)="createGist()" class="create-gist">Create Gist</button>
+  </div>
+</div>
