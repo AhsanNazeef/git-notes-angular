@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, catchError, combineLatest, of, switchMap } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-import { BehaviorSubject, Observable, combineLatest, switchMap, catchError, of, tap  } from 'rxjs';
 
 export interface Gist {
   id: string;
@@ -13,6 +14,8 @@ export interface Gist {
     avatar_url: string;
   };
   files: { [key: string]: { filename: string; type: string; language: string } };
+  stargazers_count?: number;
+  forks?: any[];
 }
 
 @Injectable({
@@ -38,10 +41,7 @@ export class GistService {
 
   constructor(private http: HttpClient, private authService: AuthService) {
     // Auto-fetch gists when page or search changes with debounce for search
-    combineLatest([
-      this.pageSubject,
-      this.searchSubject
-    ])
+    combineLatest([this.pageSubject, this.searchSubject])
       .pipe(
         switchMap(([page, search]) => {
           this.loadingSubject.next(true);
@@ -135,6 +135,19 @@ export class GistService {
     return this.errorSubject.value;
   }
 
+  createGist(gist: { description: string; public: boolean; files: any }) {
+    const headers: any = {
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Type': 'application/json',
+      Accept: 'application/vnd.github+json'
+    };
+    const token = this.authService.getAccessToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    return this.http.post('https://api.github.com/gists', gist, { headers });
+  }
+
   // Method to refresh current data
   refresh(): void {
     const currentPage = this.getCurrentPage();
@@ -157,5 +170,53 @@ export class GistService {
           this.loadingSubject.next(false);
         }
       });
+  }
+
+  isGistStarred(gistId: string) {
+    const headers: any = {
+      'X-GitHub-Api-Version': '2022-11-28'
+    };
+    const token = this.authService.getAccessToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    return this.http.get<any>(`https://api.github.com/gists/${gistId}/star`, { headers, observe: 'response' }).pipe(
+      map((res: { status: number }) => res.status === 204),
+      catchError(() => of(false))
+    );
+  }
+
+  starGist(gistId: string) {
+    const headers: any = {
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Length': '0'
+    };
+    const token = this.authService.getAccessToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    return this.http.put(`https://api.github.com/gists/${gistId}/star`, null, { headers });
+  }
+
+  unstarGist(gistId: string) {
+    const headers: any = {
+      'X-GitHub-Api-Version': '2022-11-28'
+    };
+    const token = this.authService.getAccessToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    return this.http.delete(`https://api.github.com/gists/${gistId}/star`, { headers });
+  }
+
+  forkGist(gistId: string) {
+    const headers: any = {
+      'X-GitHub-Api-Version': '2022-11-28'
+    };
+    const token = this.authService.getAccessToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    return this.http.post(`https://api.github.com/gists/${gistId}/forks`, {}, { headers });
   }
 }
