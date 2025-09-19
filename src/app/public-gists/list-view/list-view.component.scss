@@ -94,3 +94,33 @@
   font-weight: 500;
   margin: 0;
 }
+
+.actions-cell {
+  width: 100px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+tr.mat-mdc-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(61, 61, 61, 0.05);
+  }
+}
+.action-icon {
+  cursor: pointer;
+  color: rgba(0, 59, 68, 1);
+  font-size: 16px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

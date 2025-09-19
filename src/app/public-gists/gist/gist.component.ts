@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faCodeFork } from '@fortawesome/free-solid-svg-icons';
 import { Subject, takeUntil } from 'rxjs';
 import { Gist, GistService } from '../../gist.service';
 import { TimeAgoPipe } from '../../time-ago.pipe';
@@ -16,11 +19,13 @@ interface GistFile {
 
 @Component({
   selector: 'app-gist',
-  imports: [TimeAgoPipe, CommonModule, FormsModule, CodemirrorModule],
+  imports: [TimeAgoPipe, CommonModule, FormsModule, CodemirrorModule, FontAwesomeModule],
   templateUrl: './gist.component.html',
   styleUrl: './gist.component.scss'
 })
 export class GistComponent {
+  faCodeFork = faCodeFork;
+  faStar = faStar;
   gistId!: string;
   gist!: Gist;
   gistFiles!: GistFile[];

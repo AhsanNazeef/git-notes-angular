@@ -5,6 +5,7 @@
 }
 
 .gist-details {
+  overflow: hidden;
   display: flex;
   padding: 8px;
   gap: 8px;
@@ -103,4 +104,39 @@ a {
   text-decoration: underline;
   display: inline-block;
   padding: 4px 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fork-star {
+  display: flex;
+  gap: 8px;
+}
+
+.group {
+  border: 1px solid rgba(0, 59, 68, 1);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  background-color: rgba(0, 59, 68, 1);
+  align-items: center;
+}
+
+.inner-group {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+}
+
+.count {
+  font-weight: 600;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 10px 16px;
+  background-color: white;
+  color: rgba(0, 59, 68, 1);
 }

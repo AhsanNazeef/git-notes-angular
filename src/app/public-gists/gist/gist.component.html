@@ -9,7 +9,23 @@
       <p class="description">{{ gist.description }}</p>
     </div>
   </div>
-  <div></div>
+  <div class="fork-star">
+    <div class="group">
+      <div class="inner-group">
+        <fa-icon [icon]="faCodeFork" class="fa-1x"></fa-icon>
+        <p>Forks</p>
+      </div>
+      <p class="count">{{ gist.forks?.length }}</p>
+    </div>
+
+    <div class="group">
+      <div class="inner-group">
+        <fa-icon [icon]="faStar" class="fa-1x"></fa-icon>
+        <p>Stars</p>
+      </div>
+      <p class="count">0</p>
+    </div>
+  </div>
 </div>
 
 <div class="code-container" *ngFor="let file of gistFiles">

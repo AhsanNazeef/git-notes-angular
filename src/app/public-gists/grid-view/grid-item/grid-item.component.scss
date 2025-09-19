@@ -104,3 +104,14 @@
 ngx-codemirror:hover + .current-file {
   display: block;
 }
+
+.fork-star {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  right: 0;
+  padding-right: 16px;
+  padding-top: 16px;
+  color: rgba(0, 59, 68, 1);
+  cursor: pointer;
+}
