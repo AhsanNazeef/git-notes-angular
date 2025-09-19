@@ -32,6 +32,7 @@ export class AuthService {
       const provider = new GithubAuthProvider();
       provider.addScope('user:email');
       provider.addScope('repo');
+      provider.addScope('gist');
 
       const result = await signInWithPopup(auth, provider);
       const credential = GithubAuthProvider.credentialFromResult(result);
