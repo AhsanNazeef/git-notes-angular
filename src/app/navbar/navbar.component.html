@@ -1,4 +1,4 @@
-<a routerLink="/" class="logo">
+<a routerLink="/as" class="logo" (click)="goHome()">
   <img src="/assets/images/logo.png" loading="lazy" alt="Logo" />
 </a>
 
@@ -7,5 +7,23 @@
     <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
     <input type="text" placeholder="Search gists..." class="search-input" (input)="onSearchChange($event)" [(ngModel)]="searchTerm" />
   </div>
-  <button class="login-button">Login</button>
+  <button *ngIf="!currentUser" class="login-button" (click)="onLogin()" [disabled]="isAuthLoading">
+    {{ isAuthLoading ? 'Logging in...' : 'Login' }}
+  </button>
+
+  <div *ngIf="currentUser" class="user-info">
+    <img [src]="currentUser!.photoURL" [alt]="currentUser!.displayName" class="user-avatar" (click)="toggleDropdown()" tabindex="0" />
+    <div class="dropdown-menu" *ngIf="dropdownOpen">
+      <button class="dropdown-item user-details" disabled (click)="goToProfile()">
+        Signed in as <span class="user-name">{{ currentUser.displayName }}</span>
+      </button>
+      <div class="break"></div>
+      <button class="dropdown-item" (click)="goToProfile()">Your gists</button>
+      <button class="dropdown-item" (click)="goToCreateGist()">Create a Gist</button>
+      <button class="dropdown-item" (click)="openGithubProfile()">Your Github Profile</button>
+      <div class="break"></div>
+      <button class="dropdown-item" (click)="goToHelp()">Help</button>
+      <button class="dropdown-item" (click)="onLogout()">Sign out</button>
+    </div>
+  </div>
 </div>

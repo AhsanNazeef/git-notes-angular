@@ -61,3 +61,92 @@
     color: rgba(255, 255, 255, 0.8);
   }
 }
+
+.user-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.logout-button {
+  --button-width: 80px;
+  --button-height: 32px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dropdown-menu {
+  width: 180px;
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-shadow: 0px 10px 15px 5px rgba(0, 0, 0, 0.05);
+  min-width: 120px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dropdown-item {
+  background: none;
+  cursor: default;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  color: rgba(0, 59, 68, 1);
+  transition: background 0.2s;
+}
+.dropdown-item:hover:not(:disabled) {
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: rgba(61, 61, 61, 1);
+}
+
+.user-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(0, 59, 68, 1);
+}
+
+.break {
+  border: 1px solid rgba(239, 239, 239, 1);
+}
