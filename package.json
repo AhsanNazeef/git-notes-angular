@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^19.2.14",
     "@angular/cdk": "^19.2.19",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
@@ -22,10 +23,13 @@
     "@ctrl/ngx-codemirror": "^7.0.0",
     "@fortawesome/angular-fontawesome": "^1.0.0",
     "@fortawesome/fontawesome-free": "^7.0.1",
+    "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/free-regular-svg-icons": "^7.0.1",
     "@fortawesome/free-solid-svg-icons": "^7.0.1",
     "codemirror": "^5.65.20",
     "dotenv": "^17.2.2",
     "firebase": "^12.2.1",
+    "ngx-toastr": "^19.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
